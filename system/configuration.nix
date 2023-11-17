@@ -100,6 +100,12 @@
     ];
   };
 
+  users.users."fabrice".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com" # content of authorized_keys file
+    # note: ssh-copy-id will add user@your-machine after the public key
+    # but we can remove the "@your-machine" part
+  ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -107,14 +113,16 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    exa
     git
     git-crypt
     gnupg
     htop
-    wget
     neofetch
+    nixpkgs-fmt
     tmux
-    exa
+    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -128,7 +136,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    # require public key authentication for better security
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+    #settings.PermitRootLogin = "yes";
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

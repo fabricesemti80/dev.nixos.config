@@ -20,7 +20,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
-    programs.gpg = {
+  programs.gpg = {
     enable = true;
   };
 
@@ -32,6 +32,7 @@
     # pkgs.hello
     bat
     btop
+    direnv
     duf
     httpie
     git
@@ -58,14 +59,14 @@
   # plain files is through 'home.file'.
   home.file = {
 
-      #SRC:  https://raw.githubusercontent.com/eudoxia0/dotfiles/e8a5d9ab6635182da13e58338a0f0149c40f77dd/root.nix
-      ".bashrc" = {
-        source = ./sources/bashrc.sh;
-      };
-      ".local/bin" = {
-        source = ./sources/scripts;
-        recursive = true;
-      };
+    #SRC:  https://raw.githubusercontent.com/eudoxia0/dotfiles/e8a5d9ab6635182da13e58338a0f0149c40f77dd/root.nix
+    ".bashrc" = {
+      source = ./sources/bashrc.sh;
+    };
+    ".local/bin" = {
+      source = ./sources/scripts;
+      recursive = true;
+    };
 
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
@@ -92,21 +93,27 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-   
+
   ## [Enabled] PROGRAMS
   programs.git = {
     enable = true;
-    userName  = "Fabrice Semti";
+    userName = "Fabrice Semti";
     userEmail = "fabrice@fabricesemti.com";
   };
-  
+
+  programs.ssh = {
+    enable = true;
+
+  };
+
   ## [Enabled] SERVICES
-  services.vscode-server.enable = true;
 
   services.gpg-agent = {
     enable = true;
     pinentryFlavor = "qt";
   };
+
+  services.vscode-server.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
