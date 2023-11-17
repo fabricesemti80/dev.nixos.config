@@ -1,10 +1,16 @@
 { config, pkgs, ... }:
 
 {
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "fabrice";
   home.homeDirectory = "/home/fabrice";
+
+  imports = [
+    ./starship.nix
+    "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
+  ];
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -14,21 +20,15 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
-  
-  programs.gpg = {
+    programs.gpg = {
     enable = true;
-  };
-  
-  services.gpg-agent = {
-    enable = true;
-    pinentryFlavor = "qt";
   };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
+    # # "Hello world!" when run.
     # pkgs.hello
     bat
     btop
@@ -57,6 +57,16 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+
+      #SRC:  https://raw.githubusercontent.com/eudoxia0/dotfiles/e8a5d9ab6635182da13e58338a0f0149c40f77dd/root.nix
+      ".bashrc" = {
+        source = ./sources/bashrc.sh;
+      };
+      ".local/bin" = {
+        source = ./sources/scripts;
+        recursive = true;
+      };
+
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -82,7 +92,23 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+   
+  ## [Enabled] PROGRAMS
+  programs.git = {
+    enable = true;
+    userName  = "Fabrice Semti";
+    userEmail = "fabrice@fabricesemti.com";
+  };
+  
+  ## [Enabled] SERVICES
+  services.vscode-server.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "qt";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }
