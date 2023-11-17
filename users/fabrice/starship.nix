@@ -43,8 +43,8 @@ in
         format = "[$duration ](fg:yellow)";
       };
       character = {
-        success_symbol = "[❯](bold purple)";
-        error_symbol = "[❯](bold red)";
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
       };
       nix_shell = {
         disabled = false;

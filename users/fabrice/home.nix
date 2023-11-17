@@ -59,10 +59,10 @@
   # plain files is through 'home.file'.
   home.file = {
 
-    #SRC:  https://raw.githubusercontent.com/eudoxia0/dotfiles/e8a5d9ab6635182da13e58338a0f0149c40f77dd/root.nix
-    ".bashrc" = {
-      source = ./sources/bashrc.sh;
-    };
+    # #SRC:  https://raw.githubusercontent.com/eudoxia0/dotfiles/e8a5d9ab6635182da13e58338a0f0149c40f77dd/root.nix
+    # ".bashrc" = {
+    #   source = ./sources/bashrc.sh;
+    # };
     ".local/bin" = {
       source = ./sources/scripts;
       recursive = true;
@@ -95,15 +95,33 @@
   };
 
   ## [Enabled] PROGRAMS
+
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      eval "$(starship init bash)"
+      alias cat='bat'
+    '';
+  };
+
   programs.git = {
     enable = true;
     userName = "Fabrice Semti";
     userEmail = "fabrice@fabricesemti.com";
+    aliases = {
+      gcam = "git commit -a -m";
+      gco = "git checkout";
+      gu = "git push -u origin HEAD";
+      gd = "git pull origin";
+      gh = "git checkout master";
+      gb = "git branch";
+
+    };
+
   };
 
   programs.ssh = {
     enable = true;
-
   };
 
   ## [Enabled] SERVICES
