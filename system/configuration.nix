@@ -90,6 +90,20 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
+  # # Enable Display link - https://nixos.wiki/wiki/Displaylink
+  # # https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu-5.8?filetype=exe [at 18/11/2023]
+  # services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
+
+  # # nix-prefetch-url - -name displaylink.zip https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu-5.8?filetype=exe
+  # #   path
+  # #   is '/nix/store/sqzh6g4x8ik3qbzsac9jy7xwb3y55zcc-displaylink.zip'
+  # #   1
+  # #   gpanik1y53gmfjz7yqcabzhvbhz9imc3rd3z53n237qvn10jssd
+
+  # services.xserver.displayManager.sessionCommands = ''
+  #   ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
+  # '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fabrice = {
     isNormalUser = true;
@@ -114,18 +128,23 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    # exa
-    # direnv
-    # duf
-    # git
-    # git-crypt
-    # gnupg
-    # htop
-    # neofetch
-    # nixpkgs-fmt
-    # tmux
-    # vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-    # wget
+    bat
+    btop
+    cmatrix
+    direnv
+    duf
+    exa
+    git
+    git-crypt
+    gnupg
+    httpie
+    neofetch
+    nixpkgs-fmt
+    pinentry_qt
+    tree
+    tmux
+    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
