@@ -114,16 +114,18 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    exa
-    git
-    git-crypt
-    gnupg
-    htop
-    neofetch
-    nixpkgs-fmt
-    tmux
-    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-    wget
+    # exa
+    # direnv
+    # duf
+    # git
+    # git-crypt
+    # gnupg
+    # htop
+    # neofetch
+    # nixpkgs-fmt
+    # tmux
+    # vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+    # wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

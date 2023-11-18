@@ -32,12 +32,18 @@
     btop
     direnv
     duf
-    httpie
+    exa
     git
     git-crypt
     gnupg
+    httpie
+    neofetch
+    nixpkgs-fmt
     pinentry_qt
     tree
+    tmux
+    vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
+    wget
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
