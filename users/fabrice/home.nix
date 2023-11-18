@@ -27,23 +27,8 @@
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello world!" when run.
-    # pkgs.hello
-    # bat
-    # btop
-    # direnv
-    # duf
-    # exa
-    # git
-    # git-crypt
-    # gnupg
-    # httpie
-    # neofetch
-    # nixpkgs-fmt
-    # pinentry_qt
-    # tree
-    # tmux
-    # vscode-extensions.b4dm4n.vscode-nixpkgs-fmt
-    # wget
+    cowsay
+    lolcat
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
