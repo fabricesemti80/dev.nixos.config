@@ -111,6 +111,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
+      gparted
       #  thunderbird
     ];
   };
