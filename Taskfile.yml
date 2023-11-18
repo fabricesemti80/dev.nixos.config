@@ -1,12 +1,37 @@
 # https://taskfile.dev
 
-version: '3'
+version: "3"
 
-vars:
-  GREETING: Hello, World!
+vars: {}
 
 tasks:
   default:
     cmds:
-      - echo "{{.GREETING}}"
+      - task --list-all
     silent: true
+  apply-system:
+    desc: Apply configuration changes [`configuration.nix`] for this system
+    cmds:
+      - ./apply-system.sh
+  apply-users:
+    desc: Apply user changes [`home.nix`] for this system
+    cmds:
+      - ./apply-users.sh
+  update-system:
+    desc: Apply system channel updates for the configuration
+    cmds:
+      - ./update-system.sh
+  update-users:
+    desc: Apply system channel updates for the users
+    cmds:
+      - ./update-users.sh
+  nix-gc-all:
+    desc: Remove ALL previous generation
+    cmds:
+      - nix-collect-garbage --delete-old
+      - duf
+  nix-gc-30d:
+    desc: Remove generations older than 30 days
+    cmds:
+      - nix-collect-garbage --delete-older-than 30d
+      - duf
