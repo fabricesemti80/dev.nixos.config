@@ -53,14 +53,6 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # #SRC:  https://raw.githubusercontent.com/eudoxia0/dotfiles/e8a5d9ab6635182da13e58338a0f0149c40f77dd/root.nix
-    # ".bashrc" = {
-    #   source = ./sources/bashrc.sh;
-    # };
-    ".local/bin" = {
-      source = ./sources/scripts;
-      recursive = true;
-    };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
