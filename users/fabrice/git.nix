@@ -16,8 +16,13 @@ let
     s = "status -s";
     co = "checkout";
     cob = "checkout -b";
+    # # list branches sorted by last modified
     b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'";
+    # # list aliases
     la = "!git config -l | grep alias | cut -c 7-";
+    # # https://davidwalsh.name/awesome-git-aliases
+    dad = "!curl https://icanhazdadjoke.com/ && echo";
+    last = "log - 1 HEAD";
   };
 
 in
