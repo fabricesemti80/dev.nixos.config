@@ -136,6 +136,7 @@
     exa
     git
     git-crypt
+    go-task
     gnupg
     httpie
     neofetch
