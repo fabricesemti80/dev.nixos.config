@@ -9,28 +9,28 @@ tasks:
     cmds:
       - task --list-all
     silent: true
-  apply-system:
+  nixas:
     desc: Apply configuration changes [`configuration.nix`] for this system
     cmds:
       - ./apply-system.sh
-  apply-users:
+  nixau:
     desc: Apply user changes [`home.nix`] for this system
     cmds:
       - ./apply-users.sh
-  update-system:
+  nixus:
     desc: Apply system channel updates for the configuration
     cmds:
       - ./update-system.sh
-  update-users:
+  nixuu:
     desc: Apply system channel updates for the users
     cmds:
       - ./update-users.sh
-  nix-gc-all:
+  nixgca:
     desc: Remove ALL previous generation
     cmds:
       - nix-collect-garbage --delete-old
       - duf
-  nix-gc-30d:
+  nixgc30:
     desc: Remove generations older than 30 days
     cmds:
       - nix-collect-garbage --delete-older-than 30d
