@@ -5,10 +5,11 @@
   home.username = "fabrice";
   home.homeDirectory = "/home/fabrice";
   imports = [
-    ./bash.nix
-    ./git.nix
-    ./ssh.nix
-    ./starship.nix
+    ./imports/bash.nix
+    ./imports/git.nix
+    ./imports/fonts.nix
+    ./imports/ssh.nix
+    ./imports/starship.nix
     "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
   ];
   # This value determines the Home Manager release that your configuration is
