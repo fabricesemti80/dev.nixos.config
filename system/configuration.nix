@@ -13,9 +13,23 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  # ## BIOS
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "/dev/sda";
+  # boot.loader.grub.useOSProber = true;
+  ## UEFI
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
+    };
+    grub = {
+      efiSupport = true;
+      #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
+      device = "nodev";
+    };
+  };
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -47,11 +61,9 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
   # Enable the GNOME Desktop Environment.
   ## services.xserver.displayManager.gdm.enable = true;
   ## services.xserver.desktopManager.gnome.enable = true;
-
   # RDP +  Plazma
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
