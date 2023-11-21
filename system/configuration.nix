@@ -26,7 +26,7 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    settings.trusted-users = [ "root" "${user}" ];
+    settings.trusted-users = [ "root" ];
     # settings = {
     #   substituters = [
     #     "https://cache.nixos.org"
